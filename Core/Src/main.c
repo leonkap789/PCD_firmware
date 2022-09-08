@@ -24,6 +24,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "pwm.h"
+#include "led_indicator.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -92,6 +94,12 @@ int main(void)
   PWM_Init(&htim1, SERVO_Z_PWM_CHANNEL);
 
   PWM_Set_Angle(&htim1, SERVO_Z_PWM_CHANNEL, 50);
+
+  indicator_led_set(1);
+  HAL_Delay(500);
+  indicator_led_set(0);
+  HAL_Delay(3000);
+  indicator_led_set(1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
