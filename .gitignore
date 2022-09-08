@@ -4,3 +4,4 @@ STM32-for-VSCode.config.yaml
 STM32F405RGTx_FLASH.ld
 STM32Make.make
 openocd.cfg
+.DS_Store
