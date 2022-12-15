@@ -15,10 +15,12 @@
 #define SERVO_RANGE 180
 #define MILLISECOND 1E-3
 
+
 void PWM_Init(TIM_HandleTypeDef *htim, uint32_t channel)
 {
     HAL_TIM_PWM_Start(htim, channel);
 }
+
 
 void PWM_Set_Angle(TIM_HandleTypeDef *htim, uint32_t channel, float angle)
 {
@@ -49,4 +51,33 @@ void PWM_Set_Angle(TIM_HandleTypeDef *htim, uint32_t channel, float angle)
             htim->Instance->CCR4 = pulse;
             break;
     }
+}
+
+
+void PWM_Circle_Test(TIM_HandleTypeDef *htim, uint32_t channel1, uint32_t channel2)
+{
+    PWM_Set_Angle(htim, channel2, 82.5);
+    PWM_Set_Angle(htim, channel1, 130);
+    HAL_Delay(50);
+    PWM_Set_Angle(htim, channel2, 99.5);
+    PWM_Set_Angle(htim, channel1, 111);
+    HAL_Delay(50);
+    PWM_Set_Angle(htim, channel2, 115);
+    PWM_Set_Angle(htim, channel1, 90);
+    HAL_Delay(50);
+    PWM_Set_Angle(htim, channel2, 99.5);
+    PWM_Set_Angle(htim, channel1, 69);
+    HAL_Delay(50);
+    PWM_Set_Angle(htim, channel2, 82.5);
+    PWM_Set_Angle(htim, channel1, 50);
+    HAL_Delay(50);
+    PWM_Set_Angle(htim, channel2, 65.5);
+    PWM_Set_Angle(htim, channel1, 69);
+    HAL_Delay(50);
+    PWM_Set_Angle(htim, channel2, 50);
+    PWM_Set_Angle(htim, channel1, 82.5);
+    HAL_Delay(50);
+    PWM_Set_Angle(htim, channel2, 65.5);
+    PWM_Set_Angle(htim, channel1, 111);
+    HAL_Delay(50); 
 }

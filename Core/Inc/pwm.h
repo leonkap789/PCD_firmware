@@ -17,6 +17,11 @@
 
 void PWM_Init(TIM_HandleTypeDef *htim, uint32_t channel);
 
+
 void PWM_Set_Angle(TIM_HandleTypeDef *htim, uint32_t channel, float angle);
+
+
+void PWM_Circle_Test(TIM_HandleTypeDef *htim, uint32_t channel1, uint32_t channel2);
+
 
 #endif

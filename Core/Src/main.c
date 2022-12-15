@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "i2c.h"
 #include "tim.h"
 #include "gpio.h"
 
@@ -25,6 +26,7 @@
 /* USER CODE BEGIN Includes */
 #include "pwm.h"
 #include "led_indicator.h"
+#include "BMP390.h"
 
 /* USER CODE END Includes */
 
@@ -35,8 +37,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define SERVO_Y_PWM_CHANNEL TIM_CHANNEL_3
-#define SERVO_Z_PWM_CHANNEL TIM_CHANNEL_4
+#define SERVO_Y_PWM_CHANNEL TIM_CHANNEL_4
+#define SERVO_Z_PWM_CHANNEL TIM_CHANNEL_3
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -90,24 +92,25 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM1_Init();
+  MX_I2C1_Init();
+  
   /* USER CODE BEGIN 2 */
+  PWM_Init(&htim1, SERVO_Y_PWM_CHANNEL);
   PWM_Init(&htim1, SERVO_Z_PWM_CHANNEL);
 
-  PWM_Set_Angle(&htim1, SERVO_Z_PWM_CHANNEL, 50);
+  BMP390 ass;
+  BMP390_Init(&ass, &hi2c1);
 
-  indicator_led_set(1);
-  HAL_Delay(500);
-  indicator_led_set(0);
-  HAL_Delay(3000);
-  indicator_led_set(1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    BMP390_Read_Pressure(&ass);
+
     /* USER CODE END WHILE */
-    
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
