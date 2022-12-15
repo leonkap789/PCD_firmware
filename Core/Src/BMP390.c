@@ -23,6 +23,8 @@ void BMP390_Init(BMP390 *dev, I2C_HandleTypeDef *i2cHandle)
 
         }
     }
+
+    return;
 }
 
 /*DATA ACQUISITION*/

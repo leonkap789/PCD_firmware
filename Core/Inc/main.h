@@ -63,6 +63,7 @@ void Error_Handler(void);
 #define SERVO_PWM_Z_GPIO_Port GPIOA
 #define SERVO_PWM_Y_Pin GPIO_PIN_11
 #define SERVO_PWM_Y_GPIO_Port GPIOA
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

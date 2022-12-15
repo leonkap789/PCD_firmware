@@ -93,7 +93,6 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM1_Init();
   MX_I2C1_Init();
-  
   /* USER CODE BEGIN 2 */
   PWM_Init(&htim1, SERVO_Y_PWM_CHANNEL);
   PWM_Init(&htim1, SERVO_Z_PWM_CHANNEL);
