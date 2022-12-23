@@ -26,7 +26,7 @@
 /* USER CODE BEGIN Includes */
 #include "pwm.h"
 #include "led_indicator.h"
-#include "BMP390.h"
+#include "MCP9808.h"
 
 /* USER CODE END Includes */
 
@@ -97,16 +97,12 @@ int main(void)
   PWM_Init(&htim1, SERVO_Y_PWM_CHANNEL);
   PWM_Init(&htim1, SERVO_Z_PWM_CHANNEL);
 
-  BMP390 ass;
-  BMP390_Init(&ass, &hi2c1);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    BMP390_Read_Pressure(&ass);
 
     /* USER CODE END WHILE */
 
